@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-// this is modified code from part1 to satify part 2
 public class Day1 {
-    public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("input.txt");
-        List<Instruction> instructions = getInstructions(file);
-        int dialHead = 50;
-        int zeroCounter = 0;
+    private static File file;
+    private static int dialHead = 50;
+    private static int zeroCounter = 0;
 
+    public static void main(String[] args) throws FileNotFoundException {
+        file = new File("input.txt");
+        List<Instruction> instructions = getInstructions(file);
         for (Instruction inst : instructions) {
             int[] result = rotateDial(dialHead, inst);
             dialHead = result[0];
