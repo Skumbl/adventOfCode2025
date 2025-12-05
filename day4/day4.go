@@ -11,13 +11,22 @@ const file = "input.txt"
 func main() {
 	count := 0
 	depot := readInput()
-	for i, line := range depot {
-		for j, val := range line {
-			if val == 1 {
-				if countTouching(depot, i, j) < 4 {
-					count++
+
+	for {
+		changed := false
+		for i, line := range depot {
+			for j, val := range line {
+				if val == 1 {
+					if countTouching(depot, i, j) < 4 {
+						depot[i][j] = 0
+						count++
+						changed = true
+					}
 				}
 			}
+		}
+		if !changed {
+			break
 		}
 	}
 	fmt.Println(count)
